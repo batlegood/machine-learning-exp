@@ -1,8 +1,28 @@
-Proyecto Flask - Machine Learning e Ingresos
+# Proyecto Flask - Machine Learning e Ingresos
 
-Este es un proyecto básico hecho con Flask y Python.  
-La idea es mostrar un menú con dos opciones:
-- Una página sobre Machine Learning.
-- Un formulario para predecir ingresos según el número de clientes.
+Este es un proyecto básico hecho con Flask y Python con prediccion.  
+ ## Instalacion
+Clona el repositorio:
+```bash
+git clone https://github.com/batlegood/machine-learning-exp.git
+cd machine-learning-exp
+```
+## Instalacion de dependencias:
+```bash
+pip install -r requeriments.txt
+```
+## Iniciar Aplicacion:
 
-El modelo usa regresión lineal y genera un gráfico que se actualiza con cada predicción.
+```bash
+py modelo.py
+py app.py
+```
+## Aplicacion disponible:
+```
+http://127.0.0.1:5000
+```
+
+
+
+
+
