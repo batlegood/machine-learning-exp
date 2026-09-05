@@ -2,13 +2,122 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Menú Principal</title>
+  <title>Menú </title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background-color: #f4f6f9;
+      color: #1f2937;
+    }
+
+    header {
+      background-color: #0f2540;
+      color: #ffffff;
+      padding: 20px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+    }
+
+    header h1 {
+      font-size: 22px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+    }
+
+    header span {
+      font-size: 13px;
+      color: #9fb3c8;
+    }
+
+    main {
+      max-width: 900px;
+      margin: 50px auto;
+      padding: 0 20px;
+    }
+
+    .subtitle {
+      font-size: 15px;
+      color: #6b7280;
+      margin-bottom: 30px;
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 24px;
+      list-style: none;
+    }
+
+    .card {
+      background: #ffffff;
+      border-radius: 10px;
+      padding: 28px 24px;
+      text-decoration: none;
+      color: #1f2937;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+      border-left: 4px solid #0f2540;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+      display: block;
+    }
+
+    .card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 16px rgba(0,0,0,0.12);
+      border-left-color: #2563eb;
+    }
+
+    .card h2 {
+      font-size: 17px;
+      margin-bottom: 8px;
+      color: #0f2540;
+    }
+
+    .card p {
+      font-size: 13px;
+      color: #6b7280;
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px;
+      font-size: 12px;
+      color: #9ca3af;
+    }
+  </style>
 </head>
 <body>
-  <h1>Menú Principal</h1>
-  <ul>
-    <li><a href="/machine">Machine Learning</a></li>
-    <li><a href="/ingresos">Predicción de Ingresos</a></li>
-  </ul>
+
+  <header>
+    <h1>Panel de Modelos Analíticos</h1>
+    <span>Sesión activa | v1.0</span>
+  </header>
+
+  <main>
+    <p class="subtitle">Selecciona el módulo con el que deseas trabajar.</p>
+
+    <ul class="card-grid">
+      <li>
+        <a href="/machine" class="card">
+          <h2>Machine Learning</h2>
+          <p>Módulo de clasificación y entrenamiento de modelos predictivos.</p>
+        </a>
+      </li>
+      <li>
+        <a href="/ingresos" class="card">
+          <h2>Predicción de Ingresos</h2>
+          <p>Estimación de ingresos basada en variables históricas.</p>
+        </a>
+      </li>
+    </ul>
+  </main>
+
+  <footer>
+    © 2026 — Sistema interno de análisis de datos
+  </footer>
+
 </body>
 </html>
