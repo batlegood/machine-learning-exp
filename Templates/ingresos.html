@@ -1,14 +1,175 @@
-<h1>Predicción de Ingresos</h1>
-<form method="POST">
-  <label for="clientes">Número de clientes:</label>
-  <input type="number" name="clientes" required>
-  <button type="submit">Predecir</button>
-</form>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Predicción de Ingresos</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
-{% if prediccion %}
-  <h2>Ingresos estimados: {{ prediccion | round(2) }}</h2>
-  <img src="/static/grafico.png" alt="Gráfico de regresión">
-{% endif %}
-<a href="/" style="display:inline-block; padding:10px 20px; background:#007BFF; color:white; text-decoration:none; border-radius:5px;">
-  Volver al Menú
-</a>
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background-color: #f4f6f9;
+            color: #1f2937;
+        }
+
+        header {
+            background-color: #0f2540;
+            color: #ffffff;
+            padding: 20px 40px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+        }
+
+        header h1 {
+            font-size: 22px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        header span {
+            font-size: 13px;
+            color: #9fb3c8;
+        }
+
+        main {
+            max-width: 650px;
+            margin: 50px auto;
+            padding: 0 20px 60px;
+        }
+
+        .content-card {
+            background: #ffffff;
+            border-radius: 10px;
+            padding: 40px;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+            border-left: 4px solid #0f2540;
+        }
+
+        .content-card h1 {
+            color: #0f2540;
+            font-size: 20px;
+            margin-bottom: 24px;
+        }
+
+        label {
+            display: block;
+            font-size: 14px;
+            font-weight: 600;
+            color: #374151;
+            margin-bottom: 8px;
+        }
+
+        input[type="number"] {
+            width: 100%;
+            padding: 10px 14px;
+            font-size: 14px;
+            border: 1px solid #d1d5db;
+            border-radius: 6px;
+            margin-bottom: 20px;
+            color: #1f2937;
+        }
+
+        input[type="number"]:focus {
+            outline: none;
+            border-color: #2563eb;
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+        }
+
+        button[type="submit"] {
+            background-color: #0f2540;
+            color: #ffffff;
+            border: none;
+            padding: 11px 26px;
+            font-size: 14px;
+            font-weight: 500;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.15s ease;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #2563eb;
+        }
+
+        .result-box {
+            margin-top: 30px;
+            padding: 20px;
+            background-color: #f4f6f9;
+            border-left: 3px solid #16a34a;
+            border-radius: 6px;
+        }
+
+        .result-box h2 {
+            font-size: 16px;
+            color: #14532d;
+            margin-bottom: 16px;
+        }
+
+        .result-box img {
+            max-width: 100%;
+            border-radius: 6px;
+            border: 1px solid #e5e7eb;
+        }
+
+        .back-btn {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 10px 24px;
+            background-color: #0f2540;
+            color: #ffffff;
+            text-decoration: none;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 500;
+            transition: background-color 0.15s ease;
+        }
+
+        .back-btn:hover {
+            background-color: #2563eb;
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            font-size: 12px;
+            color: #9ca3af;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Panel de Modelos Analíticos</h1>
+        <span>Sesión activa | v1.0</span>
+    </header>
+
+    <main>
+        <div class="content-card">
+            <h1>Predicción de Ingresos</h1>
+
+            <form method="POST">
+                <label for="clientes">Número de clientes:</label>
+                <input type="number" name="clientes" id="clientes" required>
+                <button type="submit">Predecir</button>
+            </form>
+
+            {% if prediccion %}
+            <div class="result-box">
+                <h2>Ingresos estimados: {{ prediccion | round(2) }}</h2>
+                <img src="/static/grafico.png" alt="Gráfico de regresión">
+            </div>
+            {% endif %}
+
+            <a href="/" class="back-btn">← Volver al Menú</a>
+        </div>
+    </main>
+
+    <footer>
+        © 2026 — Sistema interno de análisis de datos
+    </footer>
+
+</body>
+</html>
