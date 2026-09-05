@@ -14,7 +14,7 @@ pip install -r requeriments.txt
 ## Iniciar Aplicacion:
 
 ```bash
-py modelo.py
+
 py app.py
 ```
 ## Aplicacion disponible:
