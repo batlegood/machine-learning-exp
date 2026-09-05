@@ -9,7 +9,7 @@ cd machine-learning-exp
 ```
 ## Instalacion de dependencias:
 ```bash
-pip install -r requeriments.txt
+pip install -r requirements.txt
 ```
 ## Iniciar Aplicacion:
 
