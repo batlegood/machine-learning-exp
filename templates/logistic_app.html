@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Aplicación de Regresión Logística</title>
+  <title>Logistic Regression Application</title>
   <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
    <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -110,54 +110,116 @@
 <body>
 
   <header>
-    <h1>Aplicación de Regresión Logística</h1>
-    <span>Sesión activa | v1.0</span>
+    <h1>Logistic Regression Application</h1>
+    <span>Active Session | v1.0</span>
   </header>
 
   <main>
+    
+    <div class="context-box">
+  <h2>Problem Context</h2>
+  <p>
+    This application analyzes customer behavior to predict whether a person will make a purchase (1) or not (0).
+    The dataset contains information such as age, monthly income, number of website visits, time spent on the site,
+    previous purchases, and whether a discount was used.
+  </p>
+  <ul>
+    <li><strong>Independent variables:</strong> Age, Monthly Income, Website Visits, Time on Site, Previous Purchases, Discount Used.</li>
+    <li><strong>Target variable:</strong> Purchase Decision.</li>
+    <li><strong>Classes:</strong> 0 = No Purchase, 1 = Purchase.</li>
+  </ul>
+</div>
+
+<div class="dataset-info">
+  <h2>Dataset Information</h2>
+  <p><strong>Number of records:</strong> {{ num_records }}</p>
+  <p><strong>Independent variables:</strong> {{ independent_vars }}</p>
+  <p><strong>Target variable:</strong> {{ target_var }}</p>
+  <p><strong>Classes:</strong> 0 = {{ class_meanings[0] }}, 1 = {{ class_meanings[1] }}</p>
+</div>
+
+<div class="visualization">
+  <h2>Data Visualization</h2>
+  <p>The graph below shows the dataset observations grouped by class.</p>
+  <img src="{{ url_for('static', filename='plot.png') }}" alt="Dataset Visualization">
+</div>
+
+<div class="split-info">
+  <h2>Train/Test Split</h2>
+  <p>The dataset was divided into 80% training and 20% testing.</p>
+  <p><strong>Training records:</strong> {{ train_size }}</p>
+  <p><strong>Testing records:</strong> {{ test_size }}</p>
+</div>
+
+<div class="metrics">
+  <h2>Model Evaluation Metrics</h2>
+  <p><strong>Accuracy:</strong> {{ accuracy }}</p>
+  <p><strong>Precision:</strong> {{ precision }}</p>
+  <p><strong>Recall:</strong> {{ recall }}</p>
+
+  <h3>Confusion Matrix</h3>
+  <table border="1" cellpadding="6">
+    <tr>
+      <th></th>
+      <th>Predicted No (0)</th>
+      <th>Predicted Yes (1)</th>
+    </tr>
+    <tr>
+      <td>Actual No (0)</td>
+      <td>{{ confusion[0][0] }}</td>
+      <td>{{ confusion[0][1] }}</td>
+    </tr>
+    <tr>
+      <td>Actual Yes (1)</td>
+      <td>{{ confusion[1][0] }}</td>
+      <td>{{ confusion[1][1] }}</td>
+    </tr>
+  </table>
+</div>
+
+    
     <div class="content-card">
       <h1></h1>
 
-      <!-- Formulario -->
       <form method="POST">
-        <label>Edad:</label>
+        <label>Age:</label>
         <input type="number" name="edad" required>
 
-        <label>Ingreso mensual:</label>
+        <label>Monthly Income:</label>
         <input type="number" name="ingreso_mensual" required>
 
-        <label>Visitas web al mes:</label>
+        <label>Website Visits per Month:</label>
         <input type="number" name="visitas_web_mes" required>
 
-        <label>Tiempo en sitio (min):</label>
+        <label>Time on Site (min):</label>
         <input type="number" step="0.1" name="tiempo_sitio_min" required>
 
-        <label>Compras previas:</label>
+        <label>Previous Purchases:</label>
         <input type="number" name="compras_previas" required>
 
-        <label>Descuento usado (0/1):</label>
+        <label>Discount Used (0/1):</label>
         <input type="number" name="descuento_usado" required>
 
-        <button type="submit">Predecir</button>
+        <button type="submit">Predict</button>
       </form>
 
       
       {% if prediction %}
       <div class="result-box">
-        <h2>Predicción: {{ prediction }}</h2>
+        <h2>Prediction: {{ prediction }}</h2>
       </div>
       {% endif %}
 
       {% if accuracy %}
       <div class="result-box">
-        <h2>Accuracy del modelo</h2>
+        <h2>Accuracy of the Model</h2>
         <p>{{ accuracy }}</p>
       </div>
       {% endif %}
 
       {% if confusion %}
       <div class="result-box">
-        <h2>Matriz de Confusión</h2>
+        <h2>Confusion Matrix</h2>
         <table class="confusion-table">
           <tr>
             <td>{{ confusion[0][0] }}</td>
@@ -170,14 +232,27 @@
         </table>
       </div>
        </div>
+       <div class="conclusions">
+  <h2>Conclusions & Recommendations</h2>
+  <p>
+    The logistic regression model provides insights into customer purchase behavior.
+    A high accuracy indicates reliable predictions, while precision and recall show
+    how well the model distinguishes between buyers and non-buyers.
+  </p>
+  <p>
+    Businesses can use these results to optimize marketing strategies, identify
+    potential customers, and improve conversion rates.
+  </p>
+</div>
+
             {% endif %}
 
-            <a href="/" class="back-btn">← Volver al Menú</a>
+            <a href="/" class="back-btn">← Return to Menu</a>
         </div>
   </main>
 
   <footer>
-    © 2026 — Sistema interno de análisis de datos
+    © 2026 — Internal data analysis system
   </footer>
 
 </body>

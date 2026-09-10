@@ -142,28 +142,28 @@
 <body>
 
     <header>
-        <h1>Panel de Modelos Analíticos</h1>
-        <span>Sesión activa | v1.0</span>
+        <h1>Analytics Model Panel</h1>
+        <span>Active session | v1.0</span>
     </header>
 
     <main>
         <div class="content-card">
-            <h1>Predicción de Ingresos</h1>
+            <h1>Revenue Forecasting</h1>
 
             <form method="POST">
-                <label for="clientes">Número de clientes:</label>
+                <label for="clientes">Number of clients:</label>
                 <input type="number" name="clientes" id="clientes" required>
-                <button type="submit">Predecir</button>
+                <button type="submit">Predict</button>
             </form>
 
             {% if prediccion %}
             <div class="result-box">
-                <h2>Ingresos estimados: {{ prediccion | round(2) }}</h2>
-                <img src="/static/grafico.png" alt="Gráfico de regresión">
+                <h2>Estimated Revenue: {{ prediccion | round(2) }}</h2>
+                <img src="/static/grafico.png" alt="Regression Chart">
             </div>
             {% endif %}
 
-            <a href="/" class="back-btn">← Volver al Menú</a>
+            <a href="/" class="back-btn">← Return to Menu</a>
         </div>
     </main>
 

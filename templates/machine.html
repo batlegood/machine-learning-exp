@@ -113,36 +113,146 @@
             font-size: 12px;
             color: #9ca3af;
         }
+
+
+        
+        input[type="radio"] { display: none; }
+
+        
+        .tabs { display: flex; gap: 10px; margin-bottom: 20px; }
+        .tabs label {
+            padding: 8px 16px;
+            background: #0f2540;
+            color: #fff;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+        .tabs label:hover { background: #2563eb; }
+
+        
+        .tab-content { display: none; }
+
+        
+        #tab1:checked ~ #content1,
+        #tab2:checked ~ #content2,
+        #tab3:checked ~ #content3,
+        #tab4:checked ~ #content4,
+        #tab5:checked ~ #content5,
+        #tab6:checked ~ #content6 {
+            display: block;
+        }
+
+            .back-btn {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 10px 24px;
+            background-color: #0f2540;
+            color: #ffffff;
+            text-decoration: none;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 500;
+            transition: background-color 0.15s ease;
+        }
+
+        .back-btn:hover {
+            background-color: #2563eb;
+
+        }
     </style>
 </head>
 <body>
 
     <header>
-        <h1>Panel de Modelos Analíticos</h1>
-        <span>Sesión activa | v1.0</span>
+        <h1>Analytics Models Panel</h1>
+        <span>Active Session | v1.0</span>
     </header>
 
-    <main>
-        <div class="content-card">
-            <h2>Machine Learning</h2>
+     <h1>Machine Learning</h1>
 
-            <h2>¿Qué es?</h2>
-            <p>Machine Learning es una parte de la inteligencia artificial que permite que las computadoras aprendan de los datos y mejoren sus resultados sin que una persona tenga que programar cada paso. Se usa, por ejemplo, para reconocer imágenes, recomendar videos, detectar fraudes y hacer predicciones.</p>
+    
+    <input type="radio" id="tab1" name="tabs" checked>
+    <input type="radio" id="tab2" name="tabs">
+    <input type="radio" id="tab3" name="tabs">
+    <input type="radio" id="tab4" name="tabs">
+    <input type="radio" id="tab5" name="tabs">
+    <input type="radio" id="tab6" name="tabs">
 
-            <h2>Tipos de Machine Learning</h2>
-            <h3>Existen tres tipos de aprendizaje automático:</h3>
-            <ul>
-                <li><p>Aprendizaje supervisado: la máquina aprende con datos que ya tienen respuestas.</p></li>
-                <li><p>Aprendizaje no supervisado: la máquina busca patrones en los datos sin tener respuestas dadas.</p></li>
-                <li><p>Aprendizaje por refuerzo: la máquina aprende mediante prueba y error, recibiendo recompensas o castigos.</p></li>
-            </ul>
+    
+    <div class="tabs">
+        <label for="tab1">What is?</label>
+        <label for="tab2">Purpose</label>
+        <label for="tab3">Data & Models</label>
+        <label for="tab4">Importance</label>
+        <label for="tab5">Examples</label>
+        <label for="tab6">Types</label>
+    </div>
 
-            <a href="/" class="back-btn">← Volver al Menú</a>
+    
+    <div id="content1" class="tab-content">
+        <h2>What is Machine Learning?</h2>
+        <p>Machine Learning is a subfield of Artificial Intelligence that focuses on building systems capable of automatically learning and improving from experience. Instead of being explicitly programmed for every task, these systems use algorithms that identify patterns in data and make predictions or decisions. This approach allows computers to adapt to new situations and solve complex problems that traditional programming cannot easily handle.</p>
+    </div>
+
+    <div id="content2" class="tab-content">
+        <h2>Main Purpose of Machine Learning</h2>
+        <p>The primary goal of Machine Learning is to enable computers to perform tasks intelligently by generalizing from examples. It aims to reduce human intervention in repetitive or large-scale decision-making processes, while increasing accuracy and efficiency. By learning from historical data, ML systems can forecast future outcomes, detect anomalies, and provide personalized recommendations.</p>
+    </div>
+
+    <div id="content3" class="tab-content">
+        <h2>Relationship between Data, Training, Models, and Predictions</h2>
+        <p>Data is the foundation of Machine Learning. During training, algorithms process large datasets to adjust internal parameters and build a model. The model represents learned knowledge and can then be used to make predictions on new, unseen data.</p>
+        <ul>
+            <li><strong>Data:</strong> provides the raw information.</li>
+            <li><strong>Training:</strong> teaches the algorithm to recognize patterns.</li>
+            <li><strong>Model:</strong> is the result of training, capturing those patterns.</li>
+            <li><strong>Predictions:</strong> are the outputs generated when the model is applied to new inputs.</li>
+        </ul>
+    </div>
+
+    <div id="content4" class="tab-content">
+        <h2>Importance of Data in Machine Learning</h2>
+        <p>High-quality data is essential for reliable models. If the dataset is biased, incomplete, or noisy, the model will produce inaccurate results. Conversely, diverse and representative datasets allow ML systems to generalize better and perform well in real-world scenarios. The saying “garbage in, garbage out” highlights that poor data leads to poor predictions.</p>
+    </div>
+
+    <div id="content5" class="tab-content">
+        <h2>Simple Examples of Machine Learning Applications</h2>
+        <ul>
+            <li>Image recognition: Identifying objects or faces in photos.</li>
+            <li>Fraud detection: Spotting unusual patterns in financial transactions.</li>
+            <li>Recommendation systems: Suggesting movies, music, or products based on user preferences.</li>
+            <li>Predictive analytics: Forecasting sales, medical diagnoses, or customer behavior.</li>
+        </ul>
+    </div>
+
+    <div id="content6" class="tab-content">
+        <h2>Types of Machine Learning</h2>
+
+        <h3>Supervised Learning</h3>
+        <p><strong>Definition:</strong> A method where the algorithm learns from labeled data, meaning each input comes with a known output.</p>
+        <p><strong>Main characteristics:</strong> Requires large datasets with correct labels; produces predictive models that can classify or estimate values.</p>
+        <p><strong>Problems solved:</strong> Classification tasks (spam detection, disease diagnosis) and regression tasks (predicting housing prices, sales forecasting).</p>
+
+        <h3>Unsupervised Learning</h3>
+        <p><strong>Definition:</strong> A method where the algorithm explores data without predefined labels, discovering hidden structures or groupings.</p>
+        <p><strong>Main characteristics:</strong> Focuses on clustering, dimensionality reduction, and anomaly detection; useful when labels are unavailable.</p>
+        <p><strong>Problems solved:</strong> Customer segmentation, grouping similar products, detecting unusual patterns in network traffic.</p>
+
+        <h3>Reinforcement Learning</h3>
+        <p><strong>Definition:</strong> A method where an agent learns by interacting with an environment, receiving rewards for good actions and penalties for bad ones.</p>
+        <p><strong>Main characteristics:</strong> Trial-and-error learning, sequential decision-making, adapts strategies over time.</p>
+        <p><strong>Problems solved:</strong> Training robots to walk, teaching AI to play games like chess or Go, optimizing autonomous vehicle navigation.</p>
+    </div>
+    </div>
+
+ 
+
+            <a href="/" class="back-btn">← Return to menu</a>
         </div>
     </main>
 
     <footer>
-        © 2026 — Sistema interno de análisis de datos
+        © 2026 — Internal data analysis system
     </footer>
 
 </body>
