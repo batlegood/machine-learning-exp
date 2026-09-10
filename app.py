@@ -19,7 +19,7 @@ def ingresos():
         prediccion = predecir_ingresos(clientes)
     return render_template("ingresos.html", prediccion=prediccion)
 
-# 👇 Aquí ya está fuera de ingresos, alineado en la columna cero
+
 @app.route("/logistic")
 def logistic():
     return render_template("logistic.html")
@@ -38,25 +38,25 @@ def logistic_app():
     from sklearn.linear_model import LogisticRegression
     from sklearn.metrics import confusion_matrix, accuracy_score
 
-    # Cargar dataset desde archivo
+    
     data = pd.read_csv("dataset_regresion_logistica (1).csv")
 
-    # Variables independientes
+    
     X = data[["edad", "ingreso_mensual", "visitas_web_mes",
               "tiempo_sitio_min", "compras_previas", "descuento_usado"]]
-    # Variable objetivo
+    
     y = data["target"]
 
     # Entrenar modelo
     model = LogisticRegression(max_iter=1000)
     model.fit(X, y)
 
-    # Evaluar modelo
+    
     y_pred = model.predict(X)
     accuracy = accuracy_score(y, y_pred)
     confusion = confusion_matrix(y, y_pred).tolist()
 
-    # Si el usuario envía datos desde el formulario
+    
     if request.method == "POST":
         edad = int(request.form["edad"])
         ingreso = int(request.form["ingreso_mensual"])
