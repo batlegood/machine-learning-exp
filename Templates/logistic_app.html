@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Aplicación de Regresión Logística</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+   <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background-color: #f4f6f9;
+      color: #1f2937;
+    }
+
+    header {
+      background-color: #0f2540;
+      color: #ffffff;
+      padding: 20px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+    }
+
+    header h1 {
+      font-size: 22px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+    }
+
+    header span {
+      font-size: 13px;
+      color: #9fb3c8;
+    }
+
+    main {
+      max-width: 900px;
+      margin: 50px auto;
+      padding: 0 20px;
+    }
+
+    .subtitle {
+      font-size: 15px;
+      color: #6b7280;
+      margin-bottom: 30px;
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 24px;
+      list-style: none;
+    }
+
+    .card {
+      background: #ffffff;
+      border-radius: 10px;
+      padding: 28px 24px;
+      text-decoration: none;
+      color: #1f2937;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+      border-left: 4px solid #0f2540;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+      display: block;
+    }
+
+    .card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 16px rgba(0,0,0,0.12);
+      border-left-color: #2563eb;
+    }
+
+    .card h2 {
+      font-size: 17px;
+      margin-bottom: 8px;
+      color: #0f2540;
+    }
+
+    .card p {
+      font-size: 13px;
+      color: #6b7280;
+    }
+
+     .back-btn {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 10px 24px;
+            background-color: #0f2540;
+            color: #ffffff;
+            text-decoration: none;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 500;
+            transition: background-color 0.15s ease;
+        }
+
+        .back-btn:hover {
+            background-color: #2563eb;
+
+        }
+    footer {
+      text-align: center;
+      padding: 30px;
+      font-size: 12px;
+      color: #9ca3af;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Aplicación de Regresión Logística</h1>
+    <span>Sesión activa | v1.0</span>
+  </header>
+
+  <main>
+    <div class="content-card">
+      <h1></h1>
+
+      <!-- Formulario -->
+      <form method="POST">
+        <label>Edad:</label>
+        <input type="number" name="edad" required>
+
+        <label>Ingreso mensual:</label>
+        <input type="number" name="ingreso_mensual" required>
+
+        <label>Visitas web al mes:</label>
+        <input type="number" name="visitas_web_mes" required>
+
+        <label>Tiempo en sitio (min):</label>
+        <input type="number" step="0.1" name="tiempo_sitio_min" required>
+
+        <label>Compras previas:</label>
+        <input type="number" name="compras_previas" required>
+
+        <label>Descuento usado (0/1):</label>
+        <input type="number" name="descuento_usado" required>
+
+        <button type="submit">Predecir</button>
+      </form>
+
+      
+      {% if prediction %}
+      <div class="result-box">
+        <h2>Predicción: {{ prediction }}</h2>
+      </div>
+      {% endif %}
+
+      {% if accuracy %}
+      <div class="result-box">
+        <h2>Accuracy del modelo</h2>
+        <p>{{ accuracy }}</p>
+      </div>
+      {% endif %}
+
+      {% if confusion %}
+      <div class="result-box">
+        <h2>Matriz de Confusión</h2>
+        <table class="confusion-table">
+          <tr>
+            <td>{{ confusion[0][0] }}</td>
+            <td>{{ confusion[0][1] }}</td>
+          </tr>
+          <tr>
+            <td>{{ confusion[1][0] }}</td>
+            <td>{{ confusion[1][1] }}</td>
+          </tr>
+        </table>
+      </div>
+       </div>
+            {% endif %}
+
+            <a href="/" class="back-btn">← Volver al Menú</a>
+        </div>
+  </main>
+
+  <footer>
+    © 2026 — Sistema interno de análisis de datos
+  </footer>
+
+</body>
+</html>

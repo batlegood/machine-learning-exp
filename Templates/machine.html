@@ -1,26 +1,149 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Machine Learning</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background-color: #f4f6f9;
+            color: #1f2937;
+        }
+
+        header {
+            background-color: #0f2540;
+            color: #ffffff;
+            padding: 20px 40px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+        }
+
+        header h1 {
+            font-size: 22px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        header span {
+            font-size: 13px;
+            color: #9fb3c8;
+        }
+
+        main {
+            max-width: 850px;
+            margin: 50px auto;
+            padding: 0 20px 60px;
+        }
+
+        .content-card {
+            background: #ffffff;
+            border-radius: 10px;
+            padding: 40px;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+            border-left: 4px solid #0f2540;
+        }
+
+        .content-card h2 {
+            color: #0f2540;
+            font-size: 19px;
+            margin-top: 28px;
+            margin-bottom: 12px;
+        }
+
+        .content-card h2:first-child {
+            margin-top: 0;
+        }
+
+        .content-card h3 {
+            color: #374151;
+            font-size: 15px;
+            font-weight: 600;
+            margin-bottom: 14px;
+        }
+
+        .content-card p {
+            font-size: 14px;
+            line-height: 1.7;
+            color: #4b5563;
+        }
+
+        .content-card ul {
+            list-style: none;
+            margin-top: 10px;
+        }
+
+        .content-card ul li {
+            background: #f4f6f9;
+            border-left: 3px solid #2563eb;
+            padding: 14px 18px;
+            margin-bottom: 12px;
+            border-radius: 6px;
+        }
+
+        .content-card ul li p {
+            color: #1f2937;
+            margin: 0;
+        }
+
+        .back-btn {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 10px 24px;
+            background-color: #0f2540;
+            color: #ffffff;
+            text-decoration: none;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 500;
+            transition: background-color 0.15s ease;
+        }
+
+        .back-btn:hover {
+            background-color: #2563eb;
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            font-size: 12px;
+            color: #9ca3af;
+        }
+    </style>
 </head>
 <body>
 
-    <h1>Machine Learning</h1>
-    <h2>¿Que es?</h2>
-    <p>Machine Learning  es una parte de la inteligencia artificial que permite que las computadoras aprendan de los datos y mejoren sus resultados sin que una persona tenga que programar cada paso. Se usa, por ejemplo, para reconocer imágenes, recomendar videos, detectar fraudes y hacer predicciones.</p>
-    <h2>Tipos de Machine Learning</h2>
-    <h3>Existen tres tipos de aprendizaje automático: </h3>
-    <ul>
-   <li> <p>Aprendizaje supervisado: la máquina aprende con datos que ya tienen respuestas.</p></li>
-    <li><p>Aprendizaje no supervisado: la máquina busca patrones en los datos sin tener respuestas dadas.</p></li>
-   <li> <p>Aprendizaje por refuerzo: la máquina aprende mediante prueba y error, recibiendo recompensas o castigos.</p></li>
-<a href="/" style="display:inline-block; padding:10px 20px; background:#007BFF; color:white; text-decoration:none; border-radius:5px;">
-  Volver al Menú
-</a>
+    <header>
+        <h1>Panel de Modelos Analíticos</h1>
+        <span>Sesión activa | v1.0</span>
+    </header>
 
-    </ul>
-   
+    <main>
+        <div class="content-card">
+            <h2>Machine Learning</h2>
+
+            <h2>¿Qué es?</h2>
+            <p>Machine Learning es una parte de la inteligencia artificial que permite que las computadoras aprendan de los datos y mejoren sus resultados sin que una persona tenga que programar cada paso. Se usa, por ejemplo, para reconocer imágenes, recomendar videos, detectar fraudes y hacer predicciones.</p>
+
+            <h2>Tipos de Machine Learning</h2>
+            <h3>Existen tres tipos de aprendizaje automático:</h3>
+            <ul>
+                <li><p>Aprendizaje supervisado: la máquina aprende con datos que ya tienen respuestas.</p></li>
+                <li><p>Aprendizaje no supervisado: la máquina busca patrones en los datos sin tener respuestas dadas.</p></li>
+                <li><p>Aprendizaje por refuerzo: la máquina aprende mediante prueba y error, recibiendo recompensas o castigos.</p></li>
+            </ul>
+
+            <a href="/" class="back-btn">← Volver al Menú</a>
+        </div>
+    </main>
+
+    <footer>
+        © 2026 — Sistema interno de análisis de datos
+    </footer>
+
 </body>
 </html>

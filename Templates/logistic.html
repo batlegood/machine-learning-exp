@@ -2,7 +2,8 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Menú </title>
+  <title>Módulo de Regresión Logística</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -81,6 +82,24 @@
       color: #6b7280;
     }
 
+    .back-btn {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 10px 24px;
+            background-color: #0f2540;
+            color: #ffffff;
+            text-decoration: none;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 500;
+            transition: background-color 0.15s ease;
+        }
+
+        .back-btn:hover {
+            background-color: #2563eb;
+
+        }
+
     footer {
       text-align: center;
       padding: 30px;
@@ -90,41 +109,34 @@
   </style>
 </head>
 <body>
-
   <header>
-    <h1>Panel de Modelos Analíticos</h1>
+    <h1>Módulo de Regresión Logística</h1>
     <span>Sesión activa | v1.0</span>
   </header>
 
   <main>
-    <p class="subtitle">Selecciona el módulo con el que deseas trabajar.</p>
+    <p class="subtitle">Selecciona la sección que deseas explorar.</p>
 
     <ul class="card-grid">
       <li>
-        <a href="/machine" class="card">
-          <h2>Machine Learning</h2>
-          <p>Módulo de clasificación y entrenamiento de modelos predictivos.</p>
+        <a href="/logistic_concepts" class="card">
+          <h2>Conceptos</h2>
+          <p>Explicación teórica de la regresión logística.</p>
         </a>
       </li>
       <li>
-        <a href="/ingresos" class="card">
-          <h2>Predicción de Ingresos</h2>
-          <p>Estimación de ingresos basada en variables históricas.</p>
+        <a href="/logistic_app" class="card">
+          <h2>Aplicación</h2>
+          <p>Modelo interactivo con métricas y predicciones.</p>
         </a>
       </li>
-      <li>
-  <a href="/logistic" class="card">
-    <h2>Regresión Logística</h2>
-    <p>Módulo con conceptos y aplicación de clasificación binaria.</p>
-  </a>
-</li>
-
     </ul>
+    <a href="/" class="back-btn">← Volver al Menú</a>
+        </div>
   </main>
 
   <footer>
     © 2026 — Sistema interno de análisis de datos
   </footer>
-
 </body>
 </html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Conceptos de Regresión Logística</title>
+  <style>
+    body { font-family: 'Segoe UI', Arial, sans-serif; background-color: #f4f6f9; color: #1f2937; }
+    header { background-color: #0f2540; color: #fff; padding: 20px 40px; display: flex; justify-content: space-between; }
+    main { max-width: 650px; margin: 50px auto; padding: 0 20px 60px; }
+    .content-card { background: #fff; border-radius: 10px; padding: 40px; box-shadow: 0 1px 4px rgba(0,0,0,0.08); border-left: 4px solid #0f2540; }
+    .content-card h1 { color: #0f2540; font-size: 20px; margin-bottom: 24px; }
+    .concept { margin-bottom: 20px; }
+    .concept h2 { font-size: 16px; color: #0f2540; margin-bottom: 8px; }
+    footer { text-align: center; padding: 30px; font-size: 12px; color: #9ca3af; }
+
+    .back-btn {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 10px 24px;
+            background-color: #0f2540;
+            color: #ffffff;
+            text-decoration: none;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 500;
+            transition: background-color 0.15s ease;
+        }
+
+        .back-btn:hover {
+            background-color: #2563eb;
+
+        }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Panel de Modelos Analíticos</h1>
+    <span>Sesión activa | v1.0</span>
+  </header>
+
+  <main>
+   <div class="content-card">
+  <h2>Conceptos de Regresión Logística</h2>
+
+  <div class="result-box">
+    <h3>¿Qué es?</h3>
+    <p>Un modelo estadístico usado para clasificación binaria (0/1). 
+       Utiliza la función sigmoide para convertir valores en probabilidades.</p>
+  </div>
+
+  <div class="result-box">
+    <h3>Aplicaciones</h3>
+    <ul>
+      <li>Predicción de compras en marketing.</li>
+      <li>Diagnóstico médico (positivo/negativo).</li>
+      <li>Detección de fraude en transacciones.</li>
+    </ul>
+  </div>
+
+  <div class="result-box">
+    <h3>Ventajas</h3>
+    <p>Modelo simple, interpretable y rápido de entrenar.</p>
+    <h3>Limitaciones</h3>
+    <p>No maneja bien datos muy desbalanceados y se restringe a clasificación binaria directa.</p>
+  </div>
+
+  <div class="result-box">
+    <h3>Pasos del modelo</h3>
+    <ol>
+      <li>Seleccionar variables relevantes.</li>
+      <li>Entrenar con dataset.</li>
+      <li>Evaluar con métricas (accuracy, matriz de confusión).</li>
+      <li>Predecir nuevos casos.</li>
+    </ol>
+  </div>
+
+ 
+
+            <a href="/" class="back-btn">← Volver al Menú</a>
+        </div>
+  </main>
+
+  <footer>
+    © 2026 — Sistema interno de análisis de datos
+  </footer>
+
+</body>
+</html>
