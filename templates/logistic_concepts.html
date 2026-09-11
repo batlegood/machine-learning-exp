@@ -2,133 +2,161 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Conceptos de Regresión Logística</title>
-  <style>
-    
-
-body { font-family: 'Segoe UI', Arial, sans-serif; background-color: #f4f6f9; color: #1f2937; }
-    header { background-color: #0f2540; color: #fff; padding: 20px 40px; display: flex; justify-content: space-between; }
-    main { max-width: 750px; margin: 50px auto; padding: 0 20px 60px; }
-    .content-card { background: #fff; border-radius: 10px; padding: 40px; box-shadow: 0 1px 4px rgba(0,0,0,0.08); border-left: 4px solid #0f2540; }
-    .tabs { display: flex; gap: 10px; margin-bottom: 20px; }
-    .tabs label { padding: 8px 16px; background: #0f2540; color: #fff; cursor: pointer; border-radius: 4px; }
-    .tabs label:hover { background: #2563eb; }
-    input[type="radio"] { display: none; }
-    .tab-content { display: none; }
-    #tab1:checked ~ #content1,
-    #tab2:checked ~ #content2,
-    #tab3:checked ~ #content3,
-    #tab4:checked ~ #content4,
-    #tab5:checked ~ #content5,
-    #tab6:checked ~ #content6,
-    #tab7:checked ~ #content7,
-    #tab8:checked ~ #content8 {
-      display: block;
-    }
-    footer { text-align: center; padding: 30px; font-size: 12px; color: #9ca3af; }
-    .back-btn { display: inline-block; margin-top: 30px; padding: 10px 24px; background-color: #0f2540; color: #fff; text-decoration: none; border-radius: 6px; font-size: 14px; font-weight: 500; }
-    .back-btn:hover { background-color: #2563eb; }
-
-    .back-btn {
-            display: inline-block;
-            margin-top: 30px;
-            padding: 10px 24px;
-            background-color: #0f2540;
-            color: #ffffff;
-            text-decoration: none;
-            border-radius: 6px;
-            font-size: 14px;
-            font-weight: 500;
-            transition: background-color 0.15s ease;
-        }
-
-        .back-btn:hover {
-            background-color: #2563eb;
-
-        }
-  </style>
+  <title>Logistic Regression Concepts</title>
+  
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
 
-   <header>
-    <h1>Analytics Models Panel</h1>
-    <span>Active Session | v1.0</span>
-  </header>
+  
+  <nav class="navbar navbar-dark bg-dark">
+    <div class="container-fluid">
+      <span class="navbar-brand mb-0 h1">Analytics Models Panel</span>
+      <span class="text-light">Active Session | v1.0</span>
+    </div>
+  </nav>
 
-  <main>
-    <div class="content-card">
-      <h2>Logistic Regression – Concepts</h2>
+  
+  <main class="container mt-4">
+    <div class="card p-4 shadow-sm">
+      <h2 class="mb-4">Logistic Regression – Concepts</h2>
 
-      <!-- Radios -->
-      <input type="radio" id="tab1" name="tabs" checked>
-      <input type="radio" id="tab2" name="tabs">
-      <input type="radio" id="tab3" name="tabs">
-      <input type="radio" id="tab4" name="tabs">
-      <input type="radio" id="tab5" name="tabs">
-      <input type="radio" id="tab6" name="tabs">
-      <input type="radio" id="tab7" name="tabs">
-      <input type="radio" id="tab8" name="tabs">
+      
+      <ul class="nav nav-tabs" id="logisticTabs" role="tablist">
+        <li class="nav-item"><button class="nav-link active" data-bs-toggle="tab" data-bs-target="#what">What is?</button></li>
+        <li class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#classification">Classification</button></li>
+        <li class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#binary">Binary Classification</button></li>
+        <li class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#independent">Independent Variable</button></li>
+        <li class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#target">Target Variable</button></li>
+        <li class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#classes">Classes & Labels</button></li>
+        <li class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#probability">Probability & Threshold</button></li>
+        <li class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#linear">Linear vs Logistic</button></li>
+      </ul>
 
-      <!-- Tabs -->
-      <div class="tabs">
-        <label for="tab1">What is?</label>
-        <label for="tab2">Classification</label>
-        <label for="tab3">Binary Classification</label>
-        <label for="tab4">Independent Variable</label>
-        <label for="tab5">Target Variable</label>
-        <label for="tab6">Classes & Labels</label>
-        <label for="tab7">Probability & Threshold</label>
-        <label for="tab8">Linear vs Logistic</label>
+      
+      <div class="tab-content mt-3">
+        <div class="tab-pane fade show active" id="what">
+          <h3>What is Logistic Regression?</h3>
+          <p>
+            Logistic Regression is a statistical model designed for classification problems, particularly when the outcome variable can only take two possible values. 
+            Unlike linear regression, which predicts continuous outcomes, logistic regression estimates the probability of belonging to a category. 
+            It uses the logistic (sigmoid) function to map any linear combination of input variables into a probability between 0 and 1. 
+            This makes it especially useful in scenarios where the goal is to determine the likelihood of an event occurring, such as whether a customer will make a purchase or not.
+          </p>
+          <p>
+            The strength of logistic regression lies in its interpretability. Each coefficient in the model represents the influence of an independent variable on the log-odds of the outcome. 
+            Analysts can not only make predictions but also understand the relative importance of each factor in determining the result, which is crucial in fields like medicine or economics.
+          </p>
+        </div>
+
+        <div class="tab-pane fade" id="classification">
+          <h3>Why is Logistic Regression a Classification Algorithm?</h3>
+          <p>
+            Logistic regression is considered a classification algorithm because it predicts discrete categories rather than continuous values. 
+            By calculating probabilities and applying a threshold (commonly 0.5), the model assigns each observation to one of two classes. 
+            This makes it a fundamental tool in machine learning and statistics, widely used in applications such as medical diagnosis, spam detection, and risk assessment.
+          </p>
+          <p>
+            Its simplicity and effectiveness make logistic regression a preferred starting point for classification tasks. 
+            Despite being mathematically straightforward, it often achieves competitive performance compared to more complex algorithms, especially when the dataset is well-structured and the relationships between variables are linear.
+          </p>
+        </div>
+
+        <div class="tab-pane fade" id="binary">
+          <h3>What is Binary Classification?</h3>
+          <p>
+            Binary classification refers to problems where the target variable has only two possible outcomes. 
+            Examples include predicting whether an email is spam or not, whether a patient has a disease or not, or whether a transaction is fraudulent or legitimate. 
+            Logistic regression is particularly suited for these tasks because it directly models the probability of one outcome versus the other.
+          </p>
+          <p>
+            In practice, binary classification is one of the most common tasks in data science. 
+            It forms the basis for many real-world applications, from credit scoring to sentiment analysis, and serves as a foundation for understanding more complex classification problems.
+          </p>
+        </div>
+
+        <div class="tab-pane fade" id="independent">
+          <h3>Independent Variable</h3>
+          <p>
+            Independent variables, often denoted as X, are the input features used to predict the outcome. 
+            In logistic regression, these can be numerical (such as age or income) or categorical (such as gender or region). 
+            Each independent variable contributes to the model by influencing the probability of the target variable taking a particular value.
+          </p>
+          <p>
+            The careful selection and preprocessing of independent variables are crucial. 
+            Irrelevant or noisy features can reduce the accuracy of the model, while well-chosen variables can significantly improve predictive performance.
+          </p>
+        </div>
+
+        <div class="tab-pane fade" id="target">
+          <h3>Dependent or Target Variable</h3>
+          <p>
+            The dependent variable, often denoted as y, is the outcome we want to predict. 
+            In logistic regression, it must be binary, meaning it can only take two values. 
+            For example: 0 = No disease, 1 = Disease. 
+            The model estimates the probability that y equals 1 given the values of the independent variables.
+          </p>
+          <p>
+            Defining the target variable correctly is essential. 
+            Mislabeling or inconsistencies in the target data can lead to poor model performance and misleading conclusions.
+          </p>
+        </div>
+
+        <div class="tab-pane fade" id="classes">
+          <h3>Classes or Labels</h3>
+          <p>
+            Classes represent the categories of the target variable. 
+            Logistic regression assigns each observation to one of these labels based on the predicted probability. 
+            For example, in a medical context, the classes could be 0 = Healthy and 1 = Sick. 
+            The clarity of class definitions ensures that the model’s predictions are meaningful and actionable.
+          </p>
+          <p>
+            In many applications, the balance between classes is important. 
+            Highly imbalanced datasets (e.g., 95% healthy, 5% sick) can cause the model to favor the majority class, requiring techniques such as resampling or adjusting thresholds.
+          </p>
+        </div>
+
+        <div class="tab-pane fade" id="probability">
+          <h3>Probability of Belonging to a Class & Threshold</h3>
+          <p>
+            Logistic regression outputs probabilities between 0 and 1. 
+            To make a decision, a classification threshold is applied. 
+            The default threshold is 0.5, meaning that if the probability is greater than or equal to 0.5, the observation is classified as 1; otherwise, it is classified as 0.
+          </p>
+          <p>
+            However, the threshold can be adjusted depending on the application. 
+            For example, in medical diagnosis, lowering the threshold may help detect more positive cases, even at the cost of more false positives. 
+            This flexibility makes logistic regression adaptable to different contexts and priorities.
+          </p>
+        </div>
+
+        <div class="tab-pane fade" id="linear">
+          <h3>Difference between Linear Regression and Logistic Regression</h3>
+          <p>
+            Linear regression predicts continuous values, such as house prices or sales numbers. 
+            Logistic regression, on the other hand, predicts categorical outcomes by modeling probabilities. 
+            While linear regression fits a straight line, logistic regression fits an S-shaped curve (sigmoid function) to map inputs to probabilities.
+          </p>
+          <p>
+            This distinction is crucial because applying linear regression to classification problems can lead to invalid predictions (e.g., probabilities less than 0 or greater than 1). 
+            Logistic regression avoids this issue by constraining outputs within the valid probability range, making it the appropriate choice for binary classification tasks.
+          </p>
+        </div>
       </div>
 
-      <!-- Content -->
-      <div id="content1" class="tab-content">
-        <h3>What is Logistic Regression?</h3>
-        <p>Logistic Regression is a statistical model used for binary classification problems, where the outcome can only take two possible values (such as 0/1, yes/no, positive/negative). It uses the logistic (sigmoid) function to transform linear combinations of input variables into probabilities between 0 and 1. This makes it especially useful when the goal is to estimate the likelihood of an event occurring.</p>
+      
+      <div class="mt-4">
+        <a href="/" class="btn btn-secondary">← Back to Menu</a>
       </div>
-
-      <div id="content2" class="tab-content">
-        <h3>Why is Logistic Regression a Classification Algorithm?</h3>
-        <p>Unlike linear regression, which predicts continuous values, logistic regression predicts discrete categories. By mapping inputs to probabilities and applying a threshold, it assigns each observation to one of two classes. This makes it a fundamental classification algorithm widely used in statistics and machine learning.</p>
-      </div>
-
-      <div id="content3" class="tab-content">
-        <h3>What is Binary Classification?</h3>
-        <p>Binary classification refers to problems where the target variable has only two possible outcomes. Examples include predicting whether an email is spam or not, whether a patient has a disease or not, or whether a transaction is fraudulent or legitimate.</p>
-      </div>
-
-      <div id="content4" class="tab-content">
-        <h3>Independent Variable</h3>
-        <p>The independent variable (X) is the input feature used to predict the outcome. For example, in a medical context, it could be a patient’s age or blood pressure. Logistic regression uses these variables to estimate the probability of belonging to a particular class.</p>
-      </div>
-
-      <div id="content5" class="tab-content">
-        <h3>Dependent or Target Variable</h3>
-        <p>The dependent variable (y) is the output we want to predict. In logistic regression, it must be binary, meaning it can only take two values. For example: 0 = No disease, 1 = Disease.</p>
-      </div>
-
-      <div id="content6" class="tab-content">
-        <h3>Classes or Labels</h3>
-        <p>Classes represent the categories of the target variable. Logistic regression assigns each observation to one of these labels based on the predicted probability. Examples: 0 = Low Risk, 1 = High Risk.</p>
-      </div>
-
-      <div id="content7" class="tab-content">
-        <h3>Probability of Belonging to a Class & Threshold</h3>
-        <p>Logistic regression outputs probabilities between 0 and 1. To make a decision, a classification threshold is applied (commonly 0.5). If the probability is greater than or equal to the threshold, the observation is classified as 1; otherwise, it is classified as 0.</p>
-      </div>
-
-      <div id="content8" class="tab-content">
-        <h3>Difference between Linear Regression and Logistic Regression</h3>
-        <p>Linear regression predicts continuous values, such as house prices or sales numbers. Logistic regression, on the other hand, predicts categorical outcomes by modeling probabilities. While linear regression fits a straight line, logistic regression fits an S-shaped curve (sigmoid function) to map inputs to probabilities.</p>
-      </div>
-
-      <a href="/" class="back-btn">← Back to Menu</a>
     </div>
   </main>
 
-  <footer>
+    
+  <footer class="text-center text-muted py-3 mt-4">
     © 2026 — Internal Data Analysis System
   </footer>
 
+  
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
