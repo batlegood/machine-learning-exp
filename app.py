@@ -233,7 +233,7 @@ def random_forest_app():
     from sklearn.model_selection import train_test_split
 
     # Cargar dataset
-    data = pd.read_csv("dataset_random_forest.csv") 
+    data = pd.read_csv("static/dataset_random_forest.csv") 
     X = data[["edad","ingreso_mensual","visitas_web_mes","tiempo_sitio_min","compras_previas","descuento_usado"]]
     y = data["target"]
 
