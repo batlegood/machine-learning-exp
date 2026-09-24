@@ -189,7 +189,7 @@ import matplotlib.pyplot as plt
 @app.route("/kmeans_app")
 def kmeans_app():
     
-    data = pd.read_csv("static/estudiantes.csv")  
+    data = pd.read_csv("static/Estudiantes.csv")  
     X = data[["Horas_Estudio", "Calificacion"]]
 
     
@@ -232,19 +232,19 @@ def random_forest_app():
     from sklearn.metrics import confusion_matrix, accuracy_score, precision_score, recall_score
     from sklearn.model_selection import train_test_split
 
-    # Cargar dataset
-    data = pd.read_csv("static/dataset_random_forest.csv") 
+    
+    data = pd.read_csv("static/{dataset_random_forest.csv") 
     X = data[["edad","ingreso_mensual","visitas_web_mes","tiempo_sitio_min","compras_previas","descuento_usado"]]
     y = data["target"]
 
-    # Train/Test split
+    
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 
    
     model = RandomForestClassifier(n_estimators=100, random_state=42)
     model.fit(X_train, y_train)
 
-    # Evaluación
+    
     y_pred = model.predict(X_test)
     accuracy = accuracy_score(y_test, y_pred)
     precision = precision_score(y_test, y_pred)
