@@ -1,9 +1,10 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 
 from Kmeans import init_kmeans_routes
 from RandomForest import init_randomforest_routes
 from LinearRegression import init_linear_routes
 from LogisticRegression import init_logistic_routes
+from reinforcement import train, GRID, START, GOAL, ACTION_NAMES
 
 app = Flask(__name__)
 
@@ -62,12 +63,28 @@ def kmeans_manual():
     table = df.to_html(classes="table table-striped", index=False)
     return render_template("kmeans_manual.html", table=table)
 
+@app.route("/reinforcement_concepts")
+def reinforcement_concepts():
+    return render_template("reinforcement_concepts.html")
 
+@app.route("/reinforcement_app", methods=["GET", "POST"])
+def reinforcement_app():
+    result = None
+    if request.method == "POST":
+        result = train(episodes=100)
+    return render_template(
+        "reinforcement_app.html",
+        result=result,
+        grid=GRID,
+        start=START,
+        goal=GOAL,
+        actions=ACTION_NAMES
+    )
 @app.route("/")
 def index():
     return render_template("menu.html")
 
-# Registrar las apps de cada modelo
+
 init_kmeans_routes(app)
 init_randomforest_routes(app)
 init_linear_routes(app)
