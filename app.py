@@ -71,15 +71,9 @@ def reinforcement_concepts():
 def reinforcement_app():
     result = None
     if request.method == "POST":
-        result = train(episodes=100)
-    return render_template(
-        "reinforcement_app.html",
-        result=result,
-        grid=GRID,
-        start=START,
-        goal=GOAL,
-        actions=ACTION_NAMES
-    )
+        result = train(episodes=50)
+    return render_template("reinforcement_app.html", result=result, grid=GRID, start=START, goal=GOAL, actions=ACTION_NAMES)
+
 @app.route("/")
 def index():
     return render_template("menu.html")
