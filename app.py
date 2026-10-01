@@ -84,5 +84,6 @@ init_randomforest_routes(app)
 init_linear_routes(app)
 init_logistic_routes(app)
 
+
 if __name__ == "__main__":
     app.run(debug=True)

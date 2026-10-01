@@ -70,7 +70,7 @@ def train(episodes=50, gamma=0.95, epsilon=1.0, epsilon_min=0.05, epsilon_decay=
     successes, rewards = 0, []
     for _ in range(episodes):
         state,total = START,0
-        for _ in range(100):  
+        for _ in range(80):  
             if rng.random() < epsilon:
                 action = rng.randrange(NUM_ACTIONS)
             else:
@@ -104,7 +104,7 @@ def train(episodes=50, gamma=0.95, epsilon=1.0, epsilon_min=0.05, epsilon_decay=
     q_table =[]
     for pos in path:
         q_table.append({"state":pos,"action_values":predict_q(model,pos).tolist()})
-
+    q_table = q_table[:15]
 
         
 
