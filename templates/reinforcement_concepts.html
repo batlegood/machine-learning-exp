@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Reinforcement Learning – Concepts</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+</head>
+<body>
+<header class="bg-dark text-light py-3 text-center">
+  <h1><i class="bi bi-robot"></i> Reinforcement Learning – Concepts</h1>
+</header>
+
+<main class="container mt-4">
+
+  
+  <div class="alert alert-info">
+    <i class="bi bi-info-circle"></i> In this exercise, the <b>agent</b> is a virtual robot moving inside a <b>maze</b>. 
+    Its possible <b>actions</b> are: Up, Down, Left, Right. 
+    It receives <b>rewards</b> (+20 when reaching the goal) and <b>penalties</b> (−1 per move, −5 when hitting a wall).
+  </div>
+
+  
+  <ul class="nav nav-tabs" id="conceptTabs" role="tablist">
+    <li class="nav-item"><button class="nav-link active" data-bs-toggle="tab" data-bs-target="#rl">What is RL?</button></li>
+    <li class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#agent">Agent</button></li>
+    <li class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#env">Environment</button></li>
+    <li class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#action">Actions</button></li>
+    <li class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#epsilon">Epsilon-greedy</button></li>
+    <li class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#qlearning">Q-Learning</button></li>
+  </ul>
+
+  
+  <div class="tab-content p-3 border border-top-0">
+
+    
+    <div class="tab-pane fade show active" id="rl">
+      <div class="card">
+        <div class="card-header bg-primary text-white">
+          <i class="bi bi-lightbulb"></i> What is Reinforcement Learning?
+        </div>
+        <div class="card-body">
+          <p>Reinforcement Learning is a learning paradigm where an agent interacts with an environment, 
+          takes actions, and receives feedback in the form of rewards or penalties. 
+          The goal is to learn a <b>policy</b> that maximizes cumulative reward over time.</p>
+          <table class="table table-striped">
+            <thead><tr><th>Concept</th><th>Maze Example</th></tr></thead>
+            <tbody>
+              <tr><td>Agent</td><td>Virtual robot</td></tr>
+              <tr><td>Environment</td><td>Maze with walls</td></tr>
+              <tr><td>Actions</td><td>Up, Down, Left, Right</td></tr>
+              <tr><td>Reward</td><td>+20 when reaching the goal</td></tr>
+              <tr><td>Penalty</td><td>−1 per move, −5 when hitting a wall</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    
+    <div class="tab-pane fade" id="agent">
+  <div class="card">
+    <div class="card-header bg-success text-white">
+      <i class="bi bi-person-bounding-box"></i> Agent
+    </div>
+    <div class="card-body">
+      <p>The agent is the decision-maker in Reinforcement Learning. In our maze example, the agent is the virtual robot that chooses whether to move up, down, left, or right.</p>
+      <p>Its role is not passive: the agent actively explores the environment, learns from mistakes, and gradually improves its strategy. Each decision affects future outcomes, making the agent responsible for balancing short-term penalties with long-term rewards.</p>
+      <div class="alert alert-success">
+        <i class="bi bi-flag"></i> The agent’s ultimate goal is to reach the maze’s exit while maximizing cumulative reward.
+      </div>
+    </div>
+  </div>
+</div>
+
+   
+   <div class="tab-pane fade" id="env">
+  <div class="card">
+    <div class="card-header bg-info text-white">
+      <i class="bi bi-grid"></i> Environment
+    </div>
+    <div class="card-body">
+      <p>The environment defines the world in which the agent operates. In our case, it is the maze with walls, open paths, and a goal position.</p>
+      <p>It provides feedback to the agent: valid moves lead to new states, while invalid moves (hitting walls or going outside the grid) result in penalties. The environment is static but unforgiving, forcing the agent to adapt its behavior.</p>
+      <div class="alert alert-info">
+        <i class="bi bi-exclamation-triangle"></i> The environment shapes the agent’s learning process by controlling rewards and penalties.
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+    <div class="tab-pane fade" id="action">
+      <div class="accordion" id="actionsAccordion">
+        <div class="accordion-item">
+          <h2 class="accordion-header"><button class="accordion-button" data-bs-toggle="collapse" data-bs-target="#collapseUp">Up</button></h2>
+          <div id="collapseUp" class="accordion-collapse collapse show"><div class="accordion-body">Moves the agent one row upward in the maze.</div></div>
+        </div>
+        <div class="accordion-item">
+          <h2 class="accordion-header"><button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#collapseDown">Down</button></h2>
+          <div id="collapseDown" class="accordion-collapse collapse"><div class="accordion-body">Moves the agent one row downward in the maze.</div></div>
+        </div>
+        <div class="accordion-item">
+          <h2 class="accordion-header"><button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#collapseLeft">Left</button></h2>
+          <div id="collapseLeft" class="accordion-collapse collapse"><div class="accordion-body">Moves the agent one column to the left.</div></div>
+        </div>
+        <div class="accordion-item">
+          <h2 class="accordion-header"><button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#collapseRight">Right</button></h2>
+          <div id="collapseRight" class="accordion-collapse collapse"><div class="accordion-body">Moves the agent one column to the right.</div></div>
+        </div>
+      </div>
+    </div>
+
+    
+    <div class="tab-pane fade" id="epsilon">
+  <div class="card">
+    <div class="card-header bg-warning text-dark">
+      <i class="bi bi-shuffle"></i> Epsilon-greedy Strategy
+    </div>
+    <div class="card-body">
+      <p>The epsilon-greedy strategy balances exploration and exploitation. With probability ε, the agent explores by choosing a random action. With probability 1−ε, it exploits by choosing the best known action.</p>
+      <p>This ensures the agent does not get stuck repeating the same path and continues to discover potentially better routes.</p>
+      <div class="alert alert-warning">
+        Example: ε = 0.2 → 20% explore, 80% exploit.
+      </div>
+      <table class="table table-bordered">
+        <thead><tr><th>ε Value</th><th>Behavior</th></tr></thead>
+        <tbody>
+          <tr><td>High (0.8)</td><td>Mostly exploration, less exploitation</td></tr>
+          <tr><td>Medium (0.5)</td><td>Balanced exploration and exploitation</td></tr>
+          <tr><td>Low (0.1)</td><td>Mostly exploitation, little exploration</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+
+    
+    <div class="tab-pane fade" id="qlearning">
+  <div class="card">
+    <div class="card-header bg-danger text-white">
+      <i class="bi bi-calculator"></i> Q-Learning
+    </div>
+    <div class="card-body">
+      <p>Q-Learning is a powerful algorithm that allows the agent to learn the optimal policy without knowing the environment’s dynamics in advance.</p>
+      <p>It updates the value of each state-action pair based on observed rewards and estimated future returns:</p>
+      <pre>Q ← Q + α [r + γ max Q(s',a') − Q]</pre>
+      <p>Where:</p>
+      <ul>
+        <li><b>α</b> = learning rate (how fast the agent updates knowledge)</li>
+        <li><b>r</b> = immediate reward</li>
+        <li><b>γ</b> = discount factor (importance of future rewards)</li>
+        <li><b>s'</b> = next state</li>
+      </ul>
+      <div class="alert alert-danger">
+        <i class="bi bi-lightning-charge"></i> Q-Learning enables the agent to discover the shortest and most rewarding path through trial and error.
+      </div>
+    </div>
+  </div>
+</div>
+
+<a href="/" class="btn btn-secondary">← Return to Menu</a>
+  </div>
+</main>
+
+<footer class="text-center text-muted py-3">
+  © 2026 — Analytical Models Dashboard
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
