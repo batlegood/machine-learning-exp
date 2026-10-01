@@ -71,7 +71,7 @@ def reinforcement_concepts():
 def reinforcement_app():
     result = None
     if request.method == "POST":
-        result = train(episodes=200)
+        result = train(episodes=50)
     return render_template("reinforcement_app.html", result=result, grid=GRID, start=START, goal=GOAL, actions=ACTION_NAMES)
 
 @app.route("/")
@@ -83,6 +83,7 @@ init_kmeans_routes(app)
 init_randomforest_routes(app)
 init_linear_routes(app)
 init_logistic_routes(app)
+
 
 if __name__ == "__main__":
     app.run(debug=True)
