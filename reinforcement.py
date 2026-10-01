@@ -3,6 +3,7 @@ import numpy as np
 from sklearn.linear_model import SGDRegressor
 
 
+
 ROWS, COLS = 10, 10
 START = (0, 0)
 GOAL = (9, 9)
@@ -61,7 +62,7 @@ def predict_q(model, state):
     features = np.array([encode(state,a) for a in range(NUM_ACTIONS)])
     return model.predict(features)
 
-def train(episodes=50, gamma=0.95, epsilon=1.0, epsilon_min=0.05, epsilon_decay=0.995):
+def train(episodes=200, gamma=0.95, epsilon=1.0, epsilon_min=0.05, epsilon_decay=0.995):
     rng = random.Random(42)
     model = SGDRegressor(loss="squared_error", penalty=None, fit_intercept=False,
                          learning_rate="constant", eta0=0.1, random_state=42)
@@ -100,16 +101,15 @@ def train(episodes=50, gamma=0.95, epsilon=1.0, epsilon_min=0.05, epsilon_decay=
         if terminated: break
     reached_goal = state==GOAL
 
-    
-    q_table=[]
-    for r in range(ROWS):
-        for c in range(COLS):
-            pos=(r,c)
-            if GRID[r][c]!="#" and GRID[r][c]!="T":
-                q_table.append({"state":pos,"action_values":predict_q(model,pos).tolist()})
+    q_table =[]
+    for pos in path:
+        q_table.append({"state":pos,"action_values":predict_q(model,pos).tolist()})
+
+
+        
 
     return {
-        "episodes":episodes,
+        "episodes":episodes,    
         "successes":successes,
         "success_rate": round(successes/episodes*100,2),
         "final_average": round(sum(rewards[-100:])/len(rewards[-100:]),2),
